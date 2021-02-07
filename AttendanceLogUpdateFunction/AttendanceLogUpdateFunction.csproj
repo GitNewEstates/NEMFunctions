@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+    <UserSecretsId>3272b052-cef7-4827-845d-6214f8412632</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.7" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AttendanceVisits">
+      <HintPath>..\..\..\Property Management Dev\Desktop App\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
+    </Reference>
+    <Reference Include="dbConn">
+      <HintPath>..\..\..\Property Management Dev\Desktop App\DesktopMod\AttendanceVisits\bin\Debug\dbConn.dll</HintPath>
+    </Reference>
+    <Reference Include="HTMLEmail">
+      <HintPath>..\..\..\Property Management Dev\Desktop App\DesktopMod\HTMLEmail\bin\Debug\HTMLEmail.dll</HintPath>
+    </Reference>
+    <Reference Include="MailServiceDLL">
+      <HintPath>..\..\..\Property Management Dev\Desktop App\DesktopMod\MailServiceDLL\bin\Debug\MailServiceDLL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>

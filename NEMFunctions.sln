@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceLogUpdateFunction", "AttendanceLogUpdateFunction\AttendanceLogUpdateFunction.csproj", "{158224F2-FC59-419D-8EC8-BFAC96A3B74D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CancelAttendanceNotificationFunction", "CancelAttendanceNotificationFunction\CancelAttendanceNotificationFunction.csproj", "{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{158224F2-FC59-419D-8EC8-BFAC96A3B74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{158224F2-FC59-419D-8EC8-BFAC96A3B74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{158224F2-FC59-419D-8EC8-BFAC96A3B74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{158224F2-FC59-419D-8EC8-BFAC96A3B74D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {953F6242-037A-4C19-9C5D-71356779882C}
+	EndGlobalSection
+EndGlobal
