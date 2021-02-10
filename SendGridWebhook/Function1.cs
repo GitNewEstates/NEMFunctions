@@ -7,6 +7,10 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using dbConn;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SendGridWebhook
 {
@@ -19,70 +23,17 @@ namespace SendGridWebhook
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             log.LogInformation(requestBody);
-            //bool sent = SendBody(requestBody);
-            //if (sent)
-            //{
-            //    log.LogInformation("Email Sent");
-            //}
-            //else
-            //{
-            //    log.LogInformation("Email not sent");
-            //}
+       
 
+            var data = JsonConvert.DeserializeObject<List<Rootobject>>(requestBody);
 
-            var data = JsonConvert.DeserializeObject<Rootobject>(requestBody);
+             foreach(Rootobject root in data)
+            {
+                RootObjectMethods.Insert(root, log);
+            }
 
-            log.LogInformation(data.GetType().ToString());
-
-
-            //log.LogInformation($"Custom Guid of this email is {data.Property1[0].Guid}");
-            //log.LogInformation($"Email with Guid of {data.Property1[0].Guid} has been {data.Property1[0]._event}");
-            //switch (data.Property1[0]._event)
-            //{
-            //    case "processed":
-
-            //        break;
-            //    case "dropped":
-
-            //        break;
-            //    case "delivered":
-
-            //        break;
-            //    case "deferred":
-
-            //        break;
-            //    case "bounce":
-
-            //        break;
-            //    case "open":
-
-            //        break;
-            //    case "click":
-
-            //        break;
-            //    case "spam report":
-
-            //        break;
-            //    case "unsubscribe":
-
-            //        break;
-            //    case "group unsubscribe":
-
-            //        break;
-            //    case "group resubscribe":
-
-            //        break;
-            //}
-            // group resubscribe
-
-            //string name = "Adam";
-            //string responseMessage = string.IsNullOrEmpty(name)
-            //    ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-            //    : $"Hello, {name}. This HTTP triggered function executed successfully.";
             string responseMessage = "done";
             return new OkObjectResult(responseMessage);
         }
@@ -111,14 +62,91 @@ namespace SendGridWebhook
             public string email { get; set; }
 
             [JsonProperty("event")]
-            public string _event { get; set; }
+            public string @event { get; set; }
             public int send_at { get; set; }
             public string sg_event_id { get; set; }
             public string sg_message_id { get; set; }
             public string smtpid { get; set; }
             public int timestamp { get; set; }
+
+            //public string html { get; set; }
+
+            //public string SentUserID { get; set; }
+            //public string RecipientUnitID { get; set; }
+            //public string RecipientCustomerID { get; set; }
         }
 
+        public static class RootObjectMethods
+        {
+            private static string constring { get { return "Server=tcp:nemserver2017.database.windows.net,1433;Initial Catalog=NEMDb2;Persist Security Info=False;User ID=adam.new;Password=N3westates1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; } }
+            public static void Insert(Rootobject rootobject, ILogger log)
+            {
+                int eventid = GetEventID(rootobject.@event);
+                if(eventid == 0)
+                {
+                    log.LogError($"Error retrieving event for email {rootobject.Guid}.");
+                }
+
+                List<string> c = new List<string>();
+                List<string> p = new List<string>();
+                List<object> o = new List<object>();
+
+                c.Add("_Guid");
+                
+                //c.Add("_event");
+                c.Add("_timestamp");
+                c.Add("eventID");
+                
+
+                p.Add("@guid");
+              
+               // p.Add("@_event");
+                p.Add("@timestamp");
+                p.Add("@eventID");
+            
+
+                o.Add(rootobject.Guid);
+              
+               // o.Add(rootobject.@event);
+               // log.LogInformation($"{rootobject.@event}");
+                o.Add(DateTime.Now);
+                o.Add(eventid);
+              
+
+                dbConnection db = new dbConnection();
+                DataTable dt = db.InsertCommandWithReturnID(constring, "core.SendGridEmailLog", c, p, o);
+
+                if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+                {
+
+                    log.LogInformation($"email with Guid {rootobject.Guid} succesfully inserted into db with id of {dt.Rows[0][0].ToString()}");
+                } else
+                {
+                    //error
+                    log.LogInformation($"email with Guid {rootobject.Guid} Unsuccesfully inserted into db. {dt.Rows[0][0].ToString()}");
+                }
+
+            }
+
+            private static int GetEventID(string _event)
+            {
+                string q = $"Select id from core.emailevents where eventname ='{_event}'";
+
+                dbConnection db = new dbConnection();
+                DataTable dt = db.GetDataTable(constring, q);
+                int id = 0;
+                if(dt.Rows.Count > 0 && dt.Rows[0][0].ToString() != "Error")
+                {
+                    int.TryParse(dt.Rows[0][0].ToString(), out id);
+                    
+                } else
+                {
+                    
+                }
+
+                return id;
+            }
+        }
 
     }
 }
