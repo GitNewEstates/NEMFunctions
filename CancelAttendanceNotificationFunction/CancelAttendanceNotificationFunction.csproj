@@ -9,7 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AttendanceVisits">
-      <HintPath>..\..\..\Property Management Dev\Desktop App\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
+      <HintPath>..\..\..\Desktop App\DesktopMod\AttendanceVisits\bin\Debug\AttendanceVisits.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

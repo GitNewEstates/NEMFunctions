@@ -27,8 +27,8 @@ namespace CancelAttendanceNotificationFunction
                 int.TryParse(ID, out int attendanceID);
                 bool.TryParse(Value, out bool _value);
 
-                log.LogInformation($"the value of the name property is {attendanceID}");
-
+                log.LogInformation($"the ID of Attendance is {attendanceID}");
+                log.LogInformation($"the value is {_value}");
 
                 if (attendanceID > 0)
                 {
@@ -65,7 +65,7 @@ namespace CancelAttendanceNotificationFunction
         private static string PreventSendingUpdate(int id)
         {
             AttendanceVisits.AttendanceNotificationFunctionData attendanceNotificationFunctionData
-                = new AttendanceVisits.AttendanceNotificationFunctionData(id);
+                = new AttendanceVisits.AttendanceNotificationFunctionData(id, 0, "");
 
             attendanceNotificationFunctionData.HoldCustomerNotification();
             string r = "";
@@ -83,7 +83,7 @@ namespace CancelAttendanceNotificationFunction
         private static string AllowSendingUpdate(int id)
         {
             AttendanceVisits.AttendanceNotificationFunctionData attendanceNotificationFunctionData
-                = new AttendanceVisits.AttendanceNotificationFunctionData(id);
+                = new AttendanceVisits.AttendanceNotificationFunctionData(id, 0,"");
 
             attendanceNotificationFunctionData.UnHoldCustomerNotification();
             string r = "";
