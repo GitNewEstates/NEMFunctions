@@ -11,9 +11,7 @@
     <Reference Include="dbConn">
       <HintPath>..\..\..\..\..\OneDrive - New Estate Management\Development - Shared\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
     </Reference>
-    <Reference Include="MailServiceDLL">
-      <HintPath>..\..\..\Desktop App\DesktopMod\MailServiceDLL\bin\Debug\MailServiceDLL.dll</HintPath>
-    </Reference>
+   
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

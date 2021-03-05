@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+    <UserSecretsId>82a87c07-31a5-41ae-9497-de00ef4ad218</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.10" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="dbConn">
+      <HintPath>..\..\..\..\..\..\Development - Shared\Shared DLLs\dbConn\dbConn\bin\Debug\dbConn.dll</HintPath>
+    </Reference>
+    <Reference Include="EstateCaseReportDLL">
+      <HintPath>..\..\..\Desktop\DesktopMod\EstateCaseReportDLL\bin\Debug\EstateCaseReportDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="MailServiceDLL">
+      <HintPath>..\..\..\Desktop\DesktopMod\MailServiceDLL\bin\Debug\MailServiceDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="UsersDLL">
+      <HintPath>..\..\..\Desktop\DesktopMod\UsersDLL\bin\Debug\UsersDLL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>

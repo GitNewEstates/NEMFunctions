@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttendanceLogUpdateFunction
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CancelAttendanceNotificationFunction", "CancelAttendanceNotificationFunction\CancelAttendanceNotificationFunction.csproj", "{1BDD9CFE-BB40-477A-AF53-522BF99C4CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendGridWebhook", "SendGridWebhook\SendGridWebhook.csproj", "{2D8071B6-1A99-4300-A09D-894637D92335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendGridWebhook", "SendGridWebhook\SendGridWebhook.csproj", "{2D8071B6-1A99-4300-A09D-894637D92335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstateMailingDailySummary", "EstateMailingDailySummary\EstateMailingDailySummary.csproj", "{ED2E83D9-9E96-438E-BE71-72CD868DE000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2D8071B6-1A99-4300-A09D-894637D92335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8071B6-1A99-4300-A09D-894637D92335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8071B6-1A99-4300-A09D-894637D92335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED2E83D9-9E96-438E-BE71-72CD868DE000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED2E83D9-9E96-438E-BE71-72CD868DE000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED2E83D9-9E96-438E-BE71-72CD868DE000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED2E83D9-9E96-438E-BE71-72CD868DE000}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
