@@ -11,7 +11,7 @@ namespace EstateMailingDailySummary
     {
         private static string Constring { get { return "Server=tcp:nemserver2017.database.windows.net,1433;Initial Catalog=NEMDb2;Persist Security Info=False;User ID=adam.new;Password=N3westates1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"; } }
         [FunctionName("Function1")]
-        public static void Run([TimerTrigger("01:00:00")]TimerInfo myTimer, ILogger log)
+        public static void Run([TimerTrigger("0 0 8 * * *")]TimerInfo myTimer, ILogger log)
         {
             //function to run every hour - aim to execute once per day at 8 am
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -19,7 +19,7 @@ namespace EstateMailingDailySummary
             //set datetime for test
             DateTime test = DateTime.Now;
 
-            TimeSpan time = new TimeSpan(8, 0, 0);
+            TimeSpan time = new TimeSpan(7, 59, 0);
             test = test.Date + time;
 
             log.LogInformation($"C# Test time is: {test}");
